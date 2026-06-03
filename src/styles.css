@@ -1,0 +1,46 @@
+:root {
+  --bg-main: #fff8fb;
+  --bg-secondary: #fffdfd;
+  --text-main: #3c2430;
+  --text-soft: #7f6070;
+  --accent-strong: #ef77a8;
+  --font-display: 'Sora', 'Trebuchet MS', sans-serif;
+  --font-body: 'Urbanist', 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at top left, rgba(255, 207, 226, 0.75), transparent 24%),
+    radial-gradient(circle at 85% 10%, rgba(255, 230, 239, 0.9), transparent 22%),
+    linear-gradient(180deg, var(--bg-main), var(--bg-secondary));
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent 75%);
+  opacity: 0.35;
+}
+
+a,
+button {
+  font: inherit;
+}
