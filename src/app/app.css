@@ -244,63 +244,25 @@
 .screen-frame {
   margin-top: 1rem;
   border-radius: 1.7rem;
-  padding: 1rem;
   min-height: 29rem;
+  overflow: hidden;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 228, 239, 0.72)),
     radial-gradient(circle at top left, rgba(255, 168, 208, 0.25), transparent 34%);
   border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.screen-nav {
-  display: flex;
-  gap: 0.45rem;
-  margin-bottom: 1.2rem;
+.hero-media,
+.project-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
-.screen-nav span {
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
-  background: rgba(255, 152, 192, 0.6);
-}
-
-.screen-content {
-  display: grid;
-  gap: 1rem;
-  align-content: start;
-}
-
-.floating-chip {
-  width: fit-content;
-  padding: 0.75rem 1rem;
-  border-radius: 999px;
-  color: var(--text-main);
-  background: rgba(255, 255, 255, 0.85);
-  animation: float-chip 4.5s ease-in-out infinite;
-}
-
-.screen-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  line-height: 0.95;
-}
-
-.screen-lines,
-.screen-panel,
-.project-preview {
-  border-radius: 1.4rem;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 202, 224, 0.66)),
-    radial-gradient(circle at top right, rgba(255, 171, 210, 0.5), transparent 26%);
-}
-
-.screen-lines {
-  min-height: 6.8rem;
-}
-
-.screen-panel {
-  min-height: 12rem;
+.hero-media {
+  min-height: 29rem;
 }
 
 .mini-card {
@@ -362,7 +324,7 @@
 }
 
 .section-heading {
-  max-width: 42rem;
+  max-width: 46rem;
   margin-bottom: 2.3rem;
 }
 
@@ -437,38 +399,73 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.6rem;
+  align-items: start;
 }
 
 .project-card {
+  grid-column: span 6;
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
   border-radius: 2rem;
   overflow: hidden;
 }
 
 .project-card.featured {
-  transform: translateY(-1.2rem);
+  grid-column: span 7;
+  transform: translateY(-0.6rem);
+}
+
+.project-card.is-video.is-landscape {
+  grid-column: span 7;
+}
+
+.project-card.is-portrait {
+  grid-column: span 5;
 }
 
 .project-preview {
-  min-height: 18rem;
+  position: relative;
+  min-height: 25rem;
   padding: 1rem;
-  display: flex;
-  align-items: end;
-}
-
-.preview-overlay {
   display: grid;
-  gap: 0.5rem;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 1.65rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 202, 224, 0.66)),
+    radial-gradient(circle at top right, rgba(255, 171, 210, 0.5), transparent 26%);
 }
 
-.preview-overlay strong {
-  font-size: 1.7rem;
-  font-family: var(--font-display);
+.project-preview.is-portrait {
+  min-height: 41rem;
+}
+
+.project-media-frame {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 244, 248, 0.92));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    0 18px 40px rgba(234, 176, 197, 0.12);
+}
+
+.project-media-frame.is-portrait {
+  width: min(100%, 24rem);
+  justify-self: center;
+}
+
+.media-video {
+  object-fit: contain;
+  background: #fff7fa;
 }
 
 .project-copy {
-  padding: 1.35rem;
+  padding: 0.15rem 0.35rem 0.2rem;
 }
 
 .journey-card,
@@ -495,16 +492,6 @@
     radial-gradient(circle at top center, rgba(255, 170, 208, 0.2), transparent 34%);
 }
 
-.contact-card h2,
-.contact-card p {
-  max-width: 48rem;
-  margin-inline: auto;
-}
-
-.contact-card p {
-  margin-top: 1.2rem;
-}
-
 .contact-pills {
   justify-content: center;
   margin-top: 1.7rem;
@@ -529,21 +516,10 @@
   }
 }
 
-@keyframes float-chip {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
 @media (max-width: 980px) {
   .hero-grid,
   .overlay-grid,
-  .journey-card,
-  .projects-grid {
+  .journey-card {
     grid-template-columns: 1fr;
   }
 
@@ -563,6 +539,17 @@
     transform: none;
   }
 
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card,
+  .project-card.featured,
+  .project-card.is-video.is-landscape,
+  .project-card.is-portrait {
+    grid-column: auto;
+  }
+
   .sticky-stack {
     min-height: auto;
   }
@@ -571,6 +558,10 @@
     position: relative;
     top: 0;
     min-height: 12rem;
+  }
+
+  .project-preview.is-portrait {
+    min-height: 34rem;
   }
 }
 
@@ -601,7 +592,8 @@
     min-height: 28rem;
   }
 
-  .screen-frame {
+  .screen-frame,
+  .hero-media {
     min-height: 22rem;
   }
 

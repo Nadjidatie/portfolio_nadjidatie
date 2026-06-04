@@ -18,19 +18,19 @@
       <div class="hero-copy">
         <p class="eyebrow">UI / UX designer feel + developer mindset</p>
         <h1>
-          Je cree des interfaces
-          <span>lumineuses, fluides</span>
-          et memorables.
+          Je mets en scene
+          <span>tes vrais projets</span>
+          avec images et video.
         </h1>
         <p class="lead">
-          Portfolio Angular pense comme une experience. Blanc, rose, douceur visuelle,
-          mouvement au scroll et sections immersives a completer avec ton nom, tes projets
-          et tes medias.
+          Le portfolio est maintenant branche sur les medias dans `public/images` et `public/video`.
+          Tes captures sont visibles directement et une zone est deja prete pour une future video
+          au format telephone.
         </p>
 
         <div class="cta-row">
-          <a class="primary-btn" href="#projets">Voir les visuels</a>
-          <a class="secondary-btn" href="#contact">Completer mes infos</a>
+          <a class="primary-btn" href="#projets">Voir les medias</a>
+          <a class="secondary-btn" href="#contact">Verifier les liens</a>
         </div>
 
         <div class="metrics">
@@ -45,30 +45,24 @@
 
       <div class="hero-visual">
         <div class="visual-card main-visual">
-          <div class="visual-label">hero concept</div>
+          <div class="visual-label">live preview</div>
           <div class="screen-frame">
-            <div class="screen-nav">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <div class="screen-content">
-              <div class="floating-chip">Angular + TypeScript + Java</div>
-              <div class="screen-title">Ton nom ici</div>
-              <div class="screen-lines"></div>
-              <div class="screen-panel"></div>
-            </div>
+            <img
+              class="hero-media"
+              src="images/gestionAeroport.png"
+              alt="Apercu du projet de gestion aeroport"
+            />
           </div>
         </div>
 
         <div class="mini-card mini-card-left">
           <span>video case study</span>
-          <strong>Ajoute une demo</strong>
+          <strong>Demo freelance integree</strong>
         </div>
 
         <div class="mini-card mini-card-right">
-          <span>photo projet</span>
-          <strong>Ajoute un mockup</strong>
+          <span>prochaine etape</span>
+          <strong>video telephone integree</strong>
         </div>
       </div>
     </div>
@@ -88,7 +82,7 @@
   <section class="overlay-story" id="experience">
     <div class="section-heading">
       <p class="eyebrow">Scroll interaction</p>
-      <h2>Les textes se superposent et changent de presence pendant le scroll.</h2>
+      <h2>Le storytelling reste present, mais il sert maintenant une galerie de projets reelle.</h2>
     </div>
 
     <div class="overlay-grid">
@@ -108,8 +102,8 @@
             <span>0{{ i + 1 }}</span>
             <h3>{{ item }}</h3>
             <p>
-              Cette zone donne l’effet de lecture en couches: le mot cle reste visible,
-              puis un autre vient glisser au-dessus quand on descend.
+              Cette zone garde l effet de lecture en couches pendant le scroll et accompagne
+              la presentation de tes projets Angular et Java.
             </p>
           </article>
         }
@@ -120,22 +114,41 @@
   <section class="projects-section" id="projets">
     <div class="section-heading">
       <p class="eyebrow">Selection visuelle</p>
-      <h2>Des cartes pretes pour tes captures, photos de projets et presentations video.</h2>
     </div>
 
     <div class="projects-grid">
-      @for (card of projectCards; track card.title; let i = $index) {
-        <article class="project-card" [class.featured]="i === 0">
-          <div class="project-preview">
-            <div class="preview-overlay">
-              <span>{{ card.tag }}</span>
-              <strong>{{ i === 1 ? 'Video preview' : 'Image preview' }}</strong>
+      @for (item of mediaLibrary; track item.title; let i = $index) {
+        <article
+          class="project-card"
+          [class.featured]="i === 0"
+          [class.is-video]="item.type === 'video'"
+          [class.is-landscape]="item.orientation === 'landscape'"
+          [class.is-portrait]="item.orientation === 'portrait'"
+        >
+          <div class="project-preview" [class.is-portrait]="item.orientation === 'portrait'">
+            <div class="project-media-frame" [class.is-portrait]="item.orientation === 'portrait'">
+              @if (item.type === 'image') {
+                <img class="project-media" [src]="item.src" [alt]="item.alt" />
+              } @else if (item.type === 'video') {
+                <video
+                  class="project-media media-video"
+                  [class.is-portrait]="item.orientation === 'portrait'"
+                  [attr.aria-label]="item.alt"
+                  [src]="item.src"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="metadata"
+                ></video>
+              }
             </div>
           </div>
+
           <div class="project-copy">
-            <span class="project-tag">{{ card.tag }}</span>
-            <h3>{{ card.title }}</h3>
-            <p>{{ card.text }}</p>
+            <span class="project-tag">{{ item.tag }}</span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.text }}</p>
           </div>
         </article>
       }
@@ -146,7 +159,7 @@
     <div class="journey-card">
       <div class="journey-copy">
         <p class="eyebrow">Structure actuelle</p>
-        <h2>Le portfolio est deja monte pour que tu viennes remplir le contenu ensuite.</h2>
+        <h2>Le site est pret pour accueillir tes prochains medias sans casser la mise en page.</h2>
       </div>
       <div class="journey-list">
         @for (item of timeline; track item) {
@@ -158,18 +171,13 @@
 
   <section class="contact-section" id="contact">
     <div class="contact-card">
-      <p class="eyebrow">A completer</p>
-      <h2>Nom Prenom, age, contacts, liens et medias seront faciles a injecter ici.</h2>
-      <p>
-        Remplace les textes temporaires, ajoute tes photos, miniatures de projets, videos
-        et liens GitHub ou LinkedIn dans cette base deja stylisee.
-      </p>
+      <p class="eyebrow">Contact</p>
+      <h2>Nadjidatie Houssouny Abdallah</h2>
       <div class="contact-pills">
-        <span>Nom Prenom</span>
-        <span>Age</span>
-        <span>Email</span>
-        <span>LinkedIn</span>
-        <span>GitHub</span>
+        <span>21 ans</span>
+        <span>houssounynadjidatie@gmail.com</span>
+        <span>linkedin.com/in/houssouny-abdallah-nadjidatie</span>
+        <span>github.com/Nadjidatie</span>
       </div>
     </div>
   </section>
