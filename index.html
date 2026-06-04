@@ -263,6 +263,11 @@
       color: var(--rose-vif);
     }
 
+    .hero-copy .eyebrow {
+      margin-bottom: 10px;
+      transform: translateY(-10px);
+    }
+
     .hero-title,
     .section-title,
     .contact-title {
@@ -312,13 +317,13 @@
     }
 
     .hero-title .line-1 {
-      font-size: clamp(5.2rem, 8.9vw, 7.4rem);
+      font-size: clamp(3.5rem, 5.9vw, 5rem);
       line-height: 0.95;
       letter-spacing: -0.045em;
     }
 
     .hero-title .line-2 {
-      font-size: clamp(6.4rem, 11.8vw, 9.6rem);
+      font-size: clamp(4rem, 6.9vw, 5.8rem);
       font-style: italic;
       letter-spacing: -0.065em;
       line-height: 0.9;
@@ -326,14 +331,14 @@
     }
 
     .hero-title .line-3 {
-      font-size: clamp(5.6rem, 10vw, 8.1rem);
+      font-size: clamp(3.7rem, 6.3vw, 5.3rem);
       letter-spacing: -0.06em;
       line-height: 0.9;
       transform: translateX(0.18em);
     }
 
     .hero-title .line-4 {
-      font-size: clamp(4.9rem, 8.8vw, 7.2rem);
+      font-size: clamp(3.3rem, 5.5vw, 4.8rem);
       letter-spacing: -0.05em;
       line-height: 0.94;
     }
@@ -341,6 +346,14 @@
     .hero-copy p {
       max-width: 560px;
       margin: 22px 0 0;
+    }
+
+    .hero-note {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--gris-texte);
     }
 
     .button-row {
@@ -411,6 +424,27 @@
       font-weight: 800;
       line-height: 1;
       color: var(--bleu-nuit);
+    }
+
+    .stat-value-roll {
+      position: relative;
+      display: inline-block;
+      height: 1em;
+      overflow: hidden;
+      vertical-align: top;
+    }
+
+    .stat-roll-track {
+      display: grid;
+      transform: translateY(0);
+      transition: transform 2.4s cubic-bezier(0.16, 0.84, 0.22, 1);
+      will-change: transform;
+    }
+
+    .stat-roll-track span {
+      display: block;
+      height: 1em;
+      line-height: 1;
     }
 
     .stat-label {
@@ -735,6 +769,11 @@
       line-height: 1.4;
     }
 
+    .media-placeholder-soft {
+      background: var(--rose-pale);
+      color: var(--rose-vif);
+    }
+
     .media-frame.is-ready .media-placeholder {
       display: none;
     }
@@ -861,9 +900,10 @@
 
     .contact-title {
       color: var(--blanc);
-      font-size: clamp(3.6rem, 7.2vw, 5.8rem);
-      letter-spacing: -0.045em;
-      text-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+      font-size: min(32px, 8vw);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-shadow: none;
     }
 
     .contact-name {
@@ -900,6 +940,22 @@
     .contact-cta {
       margin-top: 34px;
       padding: 16px 36px;
+    }
+
+    .contact-extra {
+      margin-top: 14px;
+      font-size: 11px;
+      line-height: 1.4;
+      opacity: 0.82;
+    }
+
+    .contact-extra a {
+      color: var(--rose-medium);
+      transition: color 0.2s ease;
+    }
+
+    .contact-extra a:hover {
+      color: var(--blanc);
     }
 
     .reveal {
@@ -957,11 +1013,12 @@
       }
 
       .hero {
-        padding: 24px 0 72px;
+        min-height: auto;
+        padding: 18px 0 60px;
       }
 
       .hero-grid {
-        gap: 34px;
+        gap: 28px;
       }
 
       .hero-title {
@@ -981,31 +1038,73 @@
       .hero-title .line-2,
       .hero-title .line-3,
       .hero-title .line-4 {
-        font-size: 42px;
-        line-height: 0.96;
+        font-size: 36px;
+        line-height: 0.98;
         letter-spacing: -0.03em;
         transform: none;
       }
 
+      .hero-copy p {
+        max-width: 100%;
+        margin-top: 16px;
+      }
+
+      .hero-note {
+        margin-top: 8px;
+        font-size: 13px;
+      }
+
+      .button-row {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .button-primary {
+        width: 100%;
+      }
+
       .stats-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .stat-card {
+        padding: 14px 12px;
+        border-radius: 18px;
+      }
+
+      .stat-value {
+        font-size: 24px;
+      }
+
+      .stat-label {
+        margin-top: 6px;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .hero-media {
+        padding: 6px 0 34px;
       }
 
       .main-shot {
-        height: 260px;
+        width: 100%;
+        height: 220px;
         transform: none;
       }
 
       .phone-demo {
-        right: 0;
-        bottom: -12px;
-        width: 120px;
-        height: 210px;
+        right: 6px;
+        bottom: -18px;
+        width: 108px;
+        height: 190px;
       }
 
       .section,
       .timeline-section {
-        padding: 84px 0;
+        padding: 68px 0;
       }
 
       .section-title,
@@ -1013,9 +1112,13 @@
         font-size: 42px;
       }
 
+      .contact-title {
+        font-size: 32px;
+      }
+
       .project-card,
       .feature-wide {
-        padding: 20px;
+        padding: 18px;
       }
 
       .project-card .project-visual,
@@ -1028,22 +1131,47 @@
         transform: translateY(0);
       }
 
+      .project-grid {
+        gap: 20px;
+      }
+
+      .project-copy h3 {
+        font-size: 22px;
+        line-height: 1.14;
+      }
+
+      .project-links {
+        gap: 14px;
+      }
+
       .media-frame.media-large,
       .media-frame.media-standard {
-        min-height: 260px;
+        min-height: 220px;
       }
 
       .media-frame.media-portrait {
-        width: 180px;
-        height: 340px;
+        width: min(180px, 100%);
+        height: 320px;
+        margin-inline: auto;
       }
 
-      .timeline {
-        padding-left: 28px;
+      .feature-wide h3 {
+        font-size: 26px;
       }
 
-      .timeline-item::before {
-        left: -23px;
+      .contact-links {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .contact-links a {
+        word-break: break-word;
+      }
+
+      .contact-cta {
+        width: 100%;
+        padding-inline: 20px;
       }
     }
   </style>
@@ -1058,7 +1186,6 @@
 
         <nav class="nav-links" aria-label="Navigation principale">
           <a href="#projets">Projets</a>
-          <a href="#experience">Exp&eacute;rience</a>
           <a href="#contact">Contact</a>
         </nav>
 
@@ -1070,7 +1197,6 @@
       <div class="container mobile-menu" hidden>
         <nav class="mobile-links" aria-label="Navigation mobile">
           <a href="#projets">Projets</a>
-          <a href="#experience">Exp&eacute;rience</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -1080,8 +1206,7 @@
       <section class="hero reveal">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">D&Eacute;VELOPPEUR FULL STACK | DEVOPS</p>
-            <p class="hero-name">Nadjidatie Houssouny Abdallah</p>
+            <p class="eyebrow">Developpeuse Full stack | Devops</p>
             <h1 class="hero-title">
               <span class="title-line line-dark line-1">Je construis</span>
               <span class="title-line line-accent line-2">des apps</span>
@@ -1089,8 +1214,12 @@
               <span class="title-line line-dark line-4">de A &agrave; Z.</span>
             </h1>
             <p>
-              Alternance EHESS &middot; PHP/Symfony &middot; Angular &middot; Flutter &middot; n8n.
-              Du back-end solide &agrave; l'interface qui convainc.
+              J'ai appris &agrave; coder sur de vrais projets, pour de vrais utilisateurs, dans de vrais
+              environnements. De la r&eacute;union m&eacute;tier jusqu'au serveur en prod &mdash; j'aime comprendre,
+              me projeter dans le produit avant d'&eacute;crire la premi&egrave;re ligne.
+            </p>
+            <p class="hero-note">
+              Curieuse, j'apprends vite et je m'adapte &agrave; chaque environnement.
             </p>
 
             <div class="button-row">
@@ -1099,15 +1228,25 @@
 
             <div class="stats-row">
               <article class="stat-card">
-                <span class="stat-value" data-count="2" data-suffix=" ans">0</span>
+                <span class="stat-value">1 an+</span>
                 <span class="stat-label">alternance &amp; stages</span>
               </article>
               <article class="stat-card">
-                <span class="stat-value" data-count="6" data-suffix="+">0</span>
+                <span class="stat-value stat-value-roll" data-roll="true" data-final-index="6">
+                  <span class="stat-roll-track">
+                    <span>0</span>
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6+</span>
+                  </span>
+                </span>
                 <span class="stat-label">projets livr&eacute;s</span>
               </article>
               <article class="stat-card">
-                <span class="stat-value" data-count="5">0</span>
+                <span class="stat-value">5+</span>
                 <span class="stat-label">stacks ma&icirc;tris&eacute;es</span>
               </article>
             </div>
@@ -1233,44 +1372,6 @@
             </article>
 
             <article class="project-card reveal">
-              <div class="project-grid reverse">
-                <div class="project-copy">
-                  <div class="project-number">02</div>
-                  <span class="project-badge">STAGE 3 MOIS</span>
-                  <h3>Intranet institutionnel &mdash; EHESS</h3>
-                  <p>
-                    D&eacute;veloppement d'un site intranet en PHP/Symphony pour l'Ecole des Hautes Etudes
-                    en Sciences Sociales. Conception de modules Drupal 10 personnalis&eacute;s, correction de bugs,
-                    collaboration directe avec l'&eacute;quipe technique et les utilisateurs.
-                  </p>
-                  <div class="pill-row">
-                    <span class="pill">PHP/Symphony</span>
-                    <span class="pill">Drupal 10</span>
-                    <span class="pill">HTML/CSS</span>
-                    <span class="pill">Git</span>
-                  </div>
-                  <div class="project-links">
-                    <a class="project-link" href="https://github.com/Nadjidatie" target="_blank" rel="noopener noreferrer">
-                      &rarr; Voir sur GitHub
-                    </a>
-                  </div>
-                </div>
-
-                <div class="project-visual">
-                  <div class="media-frame media-large" data-media-frame>
-                    <img
-                      src="images/ehess-intranet.png"
-                      alt="Intranet EHESS - modules Drupal 10"
-                      data-media
-                    >
-                    <div class="media-placeholder">Intranet EHESS - Drupal 10</div>
-                    <!-- REMPLACER : images/ehess-intranet.png -->
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="project-card reveal">
               <div class="project-grid">
                 <div class="project-visual">
                   <div class="visual-stack">
@@ -1281,21 +1382,26 @@
                         data-media
                       >
                       <div class="media-placeholder">Capture app avions - &agrave; remplacer</div>
-                    <!-- </div>
+                    </div>
+                    <!--
                     <a class="demo-card demo-link" href="video/avions-demo.mp4" target="_blank" rel="noopener noreferrer">
                       &#9654; Demo vid&eacute;o
                     </a>
-                  </div> -->
+                    -->
+                  </div>
                 </div>
 
                 <div class="project-copy">
-                  <div class="project-number">03</div>
+                  <div class="project-number">02</div>
                   <span class="project-badge">PROJET ACAD&Eacute;MIQUE</span>
                   <h3>Application web &mdash; Gestion d'a&eacute;roports</h3>
                   <p>
-                    Application web full-stack de gestion d'une flotte d'avions. Architecture micro-services,
-                    backend Kotlin/Spring Boot, frontend Angular 17 avec TypeScript. Tests unitaires avec SonarQube,
-                    collaboration en &eacute;quipe via GitHub.
+                    Application web full-stack de gestion des vols en temps r&eacute;elles. Architecture micro-services,
+                    backend Kotlin/Spring Boot, frontend Angular 17 avec TypeScript. Tests unitaires avec SonarQube
+                    et collaboration avec ma coll&egrave;gue via GitHub. D&eacute;ploiement sur un serveur interne
+                    de l'universit&eacute; accessible uniquement via VPN. Mise en place d'un pipeline CI/CD complet :
+                    &agrave; chaque push, les tests sont ex&eacute;cut&eacute;s automatiquement et si tout est valide
+                    le front et le back sont red&eacute;ploy&eacute;s et mis &agrave; jour automatiquement.
                   </p>
                   <div class="pill-row">
                     <span class="pill">Angular</span>
@@ -1303,14 +1409,13 @@
                     <span class="pill">Kotlin</span>
                     <span class="pill">Spring Boot</span>
                     <span class="pill">SonarQube</span>
+                    <span class="pill">CI/CD</span>
+                    <span class="pill">VPN</span>
                     <span class="pill">Git</span>
                   </div>
                   <div class="project-links">
                     <a class="project-link" href="https://github.com/Nadjidatie" target="_blank" rel="noopener noreferrer">
-                      &rarr; GitHub frontend
-                    </a>
-                    <a class="project-link" href="https://github.com/Nadjidatie" target="_blank" rel="noopener noreferrer">
-                      &rarr; GitHub backend
+                      &rarr; Github
                     </a>
                   </div>
                 </div>
@@ -1320,20 +1425,22 @@
             <article class="project-card reveal">
               <div class="project-grid reverse">
                 <div class="project-copy">
-                  <div class="project-number">04</div>
+                  <div class="project-number">03</div>
                   <span class="project-badge">PROJET PERSO</span>
-                  <h3>App de suivi &eacute;motionnel &mdash; Flutter &amp; Firebase</h3>
+                  <h3>Mood Tracker &mdash; suivi &eacute;motionnel</h3>
                   <p>
-                    Application mobile de suivi &eacute;motionnel. Chaque jour, l'utilisateur remplit un questionnaire
-                    sur son &eacute;tat. Les r&eacute;ponses alimentent des statistiques mensuelles pour visualiser ses
-                    tendances &eacute;motionnelles. Un chatbot int&eacute;gr&eacute; lit ces donn&eacute;es et g&eacute;n&egrave;re
-                    un bilan personnalis&eacute; pour aider l'utilisateur &agrave; mieux comprendre ce qu'il ressent.
+                    Application mobile de suivi &eacute;motionnel d&eacute;velopp&eacute;e avec Flutter et Firebase.
+                    Chaque jour l'utilisateur remplit un questionnaire sur son &eacute;tat. Les r&eacute;ponses
+                    alimentent des statistiques mensuelles pour visualiser ses tendances. Un chatbot int&eacute;gr&eacute;
+                    lit ces donn&eacute;es et g&eacute;n&egrave;re un bilan personnalis&eacute; pour aider &agrave;
+                    mieux comprendre ses &eacute;motions.
                   </p>
                   <div class="pill-row">
                     <span class="pill">Flutter</span>
                     <span class="pill">Dart</span>
                     <span class="pill">Firebase</span>
                     <span class="pill">Android Studio</span>
+                    <span class="pill">Chatbot IA</span>
                   </div>
                   <div class="project-links">
                     <a class="project-link" href="https://github.com/Nadjidatie" target="_blank" rel="noopener noreferrer">
@@ -1381,7 +1488,7 @@
                 </div>
 
                 <div class="project-copy">
-                  <div class="project-number">05</div>
+                  <div class="project-number">04</div>
                   <span class="project-badge">FREELANCE</span>
                   <h3>Projet freelance &mdash; Vibe coding &amp; d&eacute;ploiement VPS</h3>
                   <p>
@@ -1399,8 +1506,43 @@
                   </div>
                   <div class="project-links">
                     <a class="project-link" href="https://traderpro.phoenixpro.fr/" target="_blank" rel="noopener noreferrer">
-                      &rarr; Voir la d&eacute;mo
+                      &rarr; Voir le site
                     </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-grid reverse">
+                <div class="project-copy">
+                  <div class="project-number">05</div>
+                  <span class="project-badge">STAGE 1+ MOIS</span>
+                  <h3>Scripts Bash &amp; automatisation</h3>
+                  <p>
+                    Durant mon stage &agrave; l'EHESS, j'ai r&eacute;dig&eacute; des scripts Bash pour automatiser
+                    le nettoyage de l'espace disque du serveur, archiver les logs et lib&eacute;rer de la m&eacute;moire.
+                    Chaque ex&eacute;cution envoie automatiquement un rapport technique par email. Le script
+                    se lance automatiquement &agrave; intervalles r&eacute;guliers, sans avoir besoin d'intervenir
+                    sur le serveur.
+                  </p>
+                  <div class="pill-row">
+                    <span class="pill">Bash</span>
+                    <span class="pill">Linux</span>
+                    <span class="pill">SSH</span>
+                    <span class="pill">SMTP</span>
+                    <span class="pill">Git</span>
+                  </div>
+                </div>
+
+                <div class="project-visual">
+                  <div class="media-frame media-large" data-media-frame>
+                    <img
+                      src="images/espace.png"
+                      alt="Espace disque serveur EHESS"
+                      data-media
+                    >
+                    <div class="media-placeholder media-placeholder-soft">Capture &agrave; venir</div>
                   </div>
                 </div>
               </div>
@@ -1431,52 +1573,12 @@
         </div>
       </section>
 
-      <section class="section timeline-section" id="experience">
-        <div class="container">
-          <div class="section-heading reveal">
-            <h2 class="section-title">Exp&eacute;rience</h2>
-            <p>Une trajectoire qui part du besoin terrain et va jusqu'au produit livr&eacute;.</p>
-          </div>
-
-          <div class="timeline reveal">
-            <div class="timeline-line" aria-hidden="true"></div>
-
-            <article class="timeline-item">
-              <span class="time">Aujourd'hui</span>
-              <h3>Alternance &agrave; l'EHESS - Paris</h3>
-              <p>
-                D&eacute;veloppement applicatif, authentification CAS, annuaire LDAP, environnement Linux
-                et coordination directe avec les utilisateurs et l'&eacute;quipe technique.
-              </p>
-            </article>
-
-            <article class="timeline-item">
-              <span class="time">Stage</span>
-              <h3>Intranet institutionnel et modules Drupal 10</h3>
-              <p>
-                Travail sur un intranet m&eacute;tier, personnalisation de modules, corrections,
-                &eacute;changes avec les utilisateurs et am&eacute;lioration du quotidien produit.
-              </p>
-            </article>
-
-            <article class="timeline-item">
-              <span class="time">Stack</span>
-              <h3>Full-stack, mobile et automatisation</h3>
-              <p>
-                Angular, Symfony, Flutter, Kotlin, Firebase, n8n, SQL et Git pour construire des outils
-                utiles, connect&eacute;s et maintenables.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section class="section contact-section" id="contact">
         <div class="container">
           <div class="reveal">
             <span class="contact-name">Nadjidatie Houssouny Abdallah</span>
             <h2 class="contact-title">Travaillons ensemble</h2>
-            <p class="contact-subtitle">Disponible en alternance jusqu'&agrave; ao&ucirc;t 2026.</p>
+            <p class="contact-subtitle">Disponible en alternance jusqu'&agrave; ao&ucirc;t 2027.</p>
 
             <div class="contact-links">
               <a href="mailto:houssounynadjidatie@gmail.com">houssounynadjidatie@gmail.com</a>
@@ -1490,6 +1592,11 @@
             </div>
 
             <a class="contact-cta" href="cv/nadjidatie-cv.pdf" download>T&eacute;l&eacute;charger mon CV PDF</a>
+            <p class="contact-extra">
+              <a href="https://www.root-me.org/Subzeroo?lang=fr#323eb035d0a10b2f5939d7371a99d239" target="_blank" rel="noopener noreferrer">
+                root-me.org/Subzeroo
+              </a>
+            </p>
           </div>
         </div>
       </section>
@@ -1538,22 +1645,18 @@
       statsAnimated = true;
 
       statValues.forEach((element) => {
-        const target = Number(element.dataset.count || 0);
-        const suffix = element.dataset.suffix || '';
-        const duration = 1200;
-        const start = performance.now();
+        if (element.dataset.roll === 'true') {
+          const finalIndex = Number(element.dataset.finalIndex || 0);
+          const track = element.querySelector('.stat-roll-track');
 
-        function updateCount(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const value = Math.round(progress * target);
-          element.textContent = `${value}${suffix}`;
-
-          if (progress < 1) {
-            requestAnimationFrame(updateCount);
+          if (track) {
+            requestAnimationFrame(() => {
+              track.style.transform = `translateY(-${finalIndex}em)`;
+            });
           }
-        }
 
-        requestAnimationFrame(updateCount);
+          return;
+        }
       });
     }
 
